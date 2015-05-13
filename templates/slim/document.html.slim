@@ -71,7 +71,7 @@ html lang=(attr :lang, 'en' unless attr? :nolang)
       .slides
         - unless notitle || !has_header?
           - if (attr 'title-slide-background-image')
-            section data-background=image_uri(attr 'title-slide-background-image') data-background-size=(attr 'title-slide-background-size')
+            section data-background=image_uri(attr 'title-slide-background-image') data-background-size=(attr 'title-slide-background-size') data-background-position=(attr 'title-slide-background-position')
               h2=@header.title
               p: small=author
           - else

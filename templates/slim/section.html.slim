@@ -1,9 +1,11 @@
 / support for vertical slides
 - hide_title = (title = self.title) == '!'
 - section_background = (attr? 'data-background') ? (attr 'data-background') : image_uri(@document.attr 'slide-background-image')
+- section_background_position = (attr? 'data-background-position') ? (attr 'data-background-position') : (@document.attr 'slide-background-position')
+- section_background_size = (attr? 'data-background-size') ? (attr 'data-background-size') : (@document.attr 'slide-background-size')
 - if @level == 1 && !(subsections = sections).empty?
   section
-    section id=(hide_title ? nil : @id) data-transition=(attr 'data-transition') data-transition-speed=(attr 'data-transition-speed') data-background=(section_background) data-background-size=(attr 'data-background-size') data-background-repeat=(attr 'data-background-repeat') data-background-transition=(attr 'data-background-transition')
+    section id=(hide_title ? nil : @id) data-transition=(attr 'data-transition') data-transition-speed=(attr 'data-transition-speed') data-background=(section_background) data-background-size=(section_background_size) data-background-repeat=(attr 'data-background-repeat') data-background-position=(section_background_position) data-background-transition=(attr 'data-background-transition')
       - unless hide_title
         h2=title
       - (blocks - subsections).each do |block|
@@ -12,7 +14,7 @@
       =subsection.convert
 / standalone slides
 - else
-  section id=(hide_title ? nil : @id) data-transition=(attr 'data-transition') data-transition-speed=(attr 'data-transition-speed') data-background=(section_background) data-background-size=(attr 'data-background-size') data-background-repeat=(attr 'data-background-repeat') data-background-transition=(attr 'data-background-transition')
+  section id=(hide_title ? nil : @id) data-transition=(attr 'data-transition') data-transition-speed=(attr 'data-transition-speed') data-background=(section_background) data-background-size=(section_background_size) data-background-repeat=(attr 'data-background-repeat') data-background-position=(section_background_position) data-background-transition=(attr 'data-background-transition')
     - unless hide_title
       h2=title
     =content.chomp
